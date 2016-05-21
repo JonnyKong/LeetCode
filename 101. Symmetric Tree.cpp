@@ -6,11 +6,8 @@
 //  Copyright © 2016 Jonny Kong. All rights reserved.
 //
 
-#ifndef _01__Symmetric_Tree_h
-#define _01__Symmetric_Tree_h
 
 
-#endif /* _01__Symmetric_Tree_h */
 
 bool isSymmetric(TreeNode* root) {
     
