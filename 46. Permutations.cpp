@@ -1,14 +1,12 @@
 class Solution {
 public:
-    void swap(vector<int> & nums, int m, int n){
-        if(m != n){
-            nums[m] ^= nums[n];
-            nums[n] ^= nums[m];
-            nums[m] ^= nums[n];
-        }
+    static void swap(vector<int> & nums, int m, int n){
+        int temp = nums[m];
+        nums[m] = nums[n];
+        nums[n] = temp;
     }
     
-    void dfs(vector<int> & nums, vector<vector<int>> & result, int m){  //m to be searched
+    static void dfs(vector<int> & nums, vector<vector<int>> & result, int m){  //m to be searched
         if(m == nums.size() - 1){
             result.push_back(nums);
             return;
