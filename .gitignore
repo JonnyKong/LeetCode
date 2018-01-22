@@ -30,5 +30,9 @@
 # Vscode configuration folder
 .vscode/
 
-# Temporary Makefile
-Makefile
+# Debug symbols
+*.dSYM
+
+# Temporary Makefile and test files
+# Makefile
+test.cpp
