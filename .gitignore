@@ -27,5 +27,8 @@
 *.out
 *.app
 
-# vscode configuration folder
+# Vscode configuration folder
 .vscode/
+
+# Temporary Makefile
+Makefile
