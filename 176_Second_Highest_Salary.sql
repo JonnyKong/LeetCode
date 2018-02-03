@@ -1,0 +1,22 @@
+DROP TABLE IF EXISTS TopOne CASCADE;
+CREATE TABLE TopOne AS
+SELECT DISTINCT Salary
+FROM Employee
+ORDER BY Salary DESC
+LIMIT 1;
+
+DROP TABLE IF EXISTS TopTwo CASCADE;
+CREATE TABLE TopTwo AS
+SELECT Salary
+FROM Employee
+ORDER BY Salary DESC
+LIMIT 2;
+
+SELECT IFNULL(
+    (SELECT Salary
+    FROM TopTwo
+    WHERE NOT EXISTS(
+        SELECT *
+        FROM TopOne
+        WHERE TopTwo.Salary = TopOne.Salary))
+, NULL) AS SecondHighestSalary;
