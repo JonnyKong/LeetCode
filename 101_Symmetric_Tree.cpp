@@ -1,49 +1,35 @@
-//
-//  101. Symmetric Tree.h
-//  Project 1
-//
-//  Created by Jonny Kong on 2/22/16.
-//  Copyright © 2016 Jonny Kong. All rights reserved.
-//
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+    TreeNode *invertTree(TreeNode *root) {
+        if(root == nullptr) return root;
+        else if(root -> left == nullptr && root -> right == nullptr) return root;
 
+        TreeNode *temp = root -> right;
+        root -> right = invertTree(root -> left);
+        root -> left = invertTree(temp);
 
-
-
-bool isSymmetric(TreeNode* root) {
-    
-    if(!root || !root -> left && !root -> right) return 1;
-    
-    else if(!root -> left || !root -> right) return 0;
-    
-    return isSameTree(root -> left, invertTree(root -> right));
-    
-}
-
-TreeNode* invertTree(TreeNode* root) {
-    
-    if(!root) return NULL;
-    else if(!root -> left && !root->right) return root;
-    else{
-        
-        TreeNode* temp = root -> left;
-        root -> left = invertTree(root -> right);
-        root -> right = invertTree(temp);
         return root;
-        
+    }
+
+    bool isSameTree(TreeNode *root1, TreeNode *root2) {
+        if(root1 == nullptr && root2 == nullptr) return true;
+        else if(root1 == nullptr || root2 == nullptr) return false;
+        else return root1 -> val == root2 -> val
+                && isSameTree(root1 -> left, root2 -> left)
+                && isSameTree(root1 -> right, root2 -> right);
     }
     
-}
-
-bool isSameTree(TreeNode* p, TreeNode* q) {
-    
-    if(!p && !q) return 1;
-    
-    else if(!p) return 0;
-    
-    else if(!q) return 0;
-    
-    else if(q -> val != p -> val) return 0;
-    
-    else return( isSameTree(p -> left, q -> left) && isSameTree(p -> right, q -> right) );
-    
-}
+public: 
+    bool isSymmetric(TreeNode* root) {
+        if(root == nullptr) return true;
+        else return isSameTree(root -> left, invertTree(root -> right));
+    }
+};

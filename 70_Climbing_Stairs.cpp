@@ -6,27 +6,17 @@
 //  Copyright © 2016 Jonny Kong. All rights reserved.
 //
 
-int climbStairs(int n) {
-    
-    if(n == 1) return 1;
-    
-    else if(n == 2) return 2;
-    
-    else{
-        
-        int* p = new int[n];
-        
-        p[0] = 1; p[1] = 2;
-        
-        for(int i = 2; i < n; ++i){
-            
-            p[i] = p[i - 1] + p[i - 2];
-            
+class Solution {
+public:
+    int climbStairs(int n) {
+        int *dp = new int(n);
+        dp[0] = 1;
+        dp[1] = 1;
+        for(int i = 2; i < n; ++i) {
+            dp[i] = dp[i - 1] + dp[i - 2];
         }
-        
-        int result =  p[n - 1];
-        delete [] p;
+        int result = dp[n - 1];
+        delete dp;
         return result;
-        
     }
-}
+};
