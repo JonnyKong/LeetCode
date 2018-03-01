@@ -1,6 +1,6 @@
 TARGET = test
 DEPS =
-CFLAGS = -g		# Generate debugging files
+CFLAGS = -g -std=c++11
 
 all: ${TARGET}
 
