@@ -34,5 +34,6 @@
 *.dSYM
 
 # Temporary Makefile and test files
-# Makefile
+Makefile
 test.cpp
+test
