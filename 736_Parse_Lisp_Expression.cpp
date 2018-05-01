@@ -74,7 +74,7 @@ private:
     }
 
     /* Recursive evaluation */
-    int env_helper(const string & expression, unordered_map<string, int> env) {
+    int eval_helper(const string & expression, unordered_map<string, int> env) {
         Expression exp_parsed = parse(expression);
         if(exp_parsed.type == INT) {
             /* Immediate number or variable in scope */
@@ -87,17 +87,17 @@ private:
         } else if(exp_parsed.type == LET) {
             /* Eval and update var bindings in let scope, then eval expression */
             for(int i = 0; i < exp_parsed.variable.size(); ++i) {
-                env[exp_parsed.variable[i]] = env_helper(exp_parsed.value[i], env);
+                env[exp_parsed.variable[i]] = eval_helper(exp_parsed.value[i], env);
             }
-            return env_helper(exp_parsed.expression1, env);
+            return eval_helper(exp_parsed.expression1, env);
         } else if(exp_parsed.type == MULT) {
             /* Evaluate mult recursively */
-            return env_helper(exp_parsed.expression1, env) * 
-                    env_helper(exp_parsed.expression2, env);
+            return eval_helper(exp_parsed.expression1, env) * 
+                    eval_helper(exp_parsed.expression2, env);
         } else if(exp_parsed.type == ADD) {
             /* Evaluate add recursively */
-            return env_helper(exp_parsed.expression1, env) + 
-                    env_helper(exp_parsed.expression2, env);
+            return eval_helper(exp_parsed.expression1, env) + 
+                    eval_helper(exp_parsed.expression2, env);
         } else {
             assert(false);
         }
@@ -106,6 +106,6 @@ private:
 public:
     int evaluate(string expression) {
         /* Initialize with empty closure */
-        return env_helper(expression, unordered_map<string, int>());
+        return eval_helper(expression, unordered_map<string, int>());
     }
 };
