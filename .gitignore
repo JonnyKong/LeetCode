@@ -37,3 +37,4 @@
 Makefile
 test.cpp
 test
+*.class
