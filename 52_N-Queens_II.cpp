@@ -25,6 +25,7 @@ public:
         length = n;
         position = new int[n];
         dfs(0);
+        delete [] position;
         return count;
     }
 };
