@@ -37,4 +37,5 @@
 Makefile
 test.cpp
 test
-*.class
+Solution.java
+Solution.class
