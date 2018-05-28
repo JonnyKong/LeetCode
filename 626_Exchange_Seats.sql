@@ -6,7 +6,7 @@ SELECT
     END) AS id,
     student
 FROM seat,
-	(SELECT COUNT(*) AS count
-		FROM seat
-	) AS seat_count
+    (SELECT COUNT(*) AS count
+        FROM seat
+    ) AS seat_count
 ORDER BY id;
