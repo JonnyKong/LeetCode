@@ -1,37 +1,47 @@
 class Solution {
-    int[] pos;
-    int size;
-    int count;
-    
-    /* Returns whether first n-1 columns conflicts with column n 0-indexed */
-    private boolean isConflict(int n) {
-        for(int i = 0; i < n; ++i) {
-            if(pos[i] == pos[n] || n-i == Math.abs(pos[i] - pos[n])) {
+
+    private int result;
+
+    public int totalNQueens(int n) {
+
+        /* Sanity check */
+        if(n == 0)
+            return 0;
+
+        result = 0;
+        int[] pos = new int[n];
+
+        dfs(pos, 0);
+
+        return result;
+    }
+
+    /* dfs */
+    private void dfs(int[] pos, int index) {
+        /* One solution found */
+        if(index == pos.length) {
+            result++;
+            return;
+        }
+
+        /* Keep searching */
+        for(int i = 0; i < pos.length; ++i) {
+            pos[index] = i;
+
+            if(isConflict(pos, index) == false)
+                dfs(pos, index + 1);
+        }
+
+    }
+
+    /* isConflict - Returns whether column i conflicts with previous columns. */
+    private boolean isConflict(int[] pos, int index) {
+        for(int i = 0; i < index; ++i) {
+            if(pos[index] == pos[i] || (index - i) == Math.abs(pos[index] - pos[i]))
                 return true;
-            }
         }
         return false;
     }
 
-    /* DFS the nth column 0-indexed */
-    private void dfs(int n) {
-        if(n == size) {
-            count += 1;
-            return;
-        }
-        for(int i = 0; i < size; ++i) {
-            pos[n] = i;
-            if(isConflict(n) == false) {
-                dfs(n + 1);
-            }
-        }
-    }
-
-    public int totalNQueens(int n) {
-        size = n;
-        pos = new int[n];
-        dfs(0);
-        return count;
-    }
-
 }
+
