@@ -23,6 +23,7 @@ class Solution {
             dfs(result, current, l - 1, r);
             current.deleteCharAt(current.length() - 1);
         }
+        
         /* Pruning */
         if(l < r) {
             current.append(')');
