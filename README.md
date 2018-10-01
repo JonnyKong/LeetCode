@@ -1,6 +1,6 @@
 # Leetcode
-:smirk: Trivial  
-:star: Important  
+:smirk:: Trivial  
+:star:: Important  
 :star::star:: Very Important  
 
 
