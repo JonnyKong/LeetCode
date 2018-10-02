@@ -8,7 +8,10 @@ class Solution {
      *      tree, where the diameter of the tree is depth(l) + depth(r) + 1.
      *
      *      Thus, declare global variable to record the max diameter with root
-     *      being any node within the tree.
+     *      being any node within the tree. 
+     *      
+     *      The call stack is identical to that of finding the max depth of a 
+     *      binary tree, only calculating recording results halfway.
      **/
 
     private int resultMax = 0;

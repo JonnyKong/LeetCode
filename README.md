@@ -2,16 +2,16 @@
 
 | Date          | Problem                       |  Remark       |
 | ------------- | ----------------------------- | ------------- |
-| 2018-09-16    | 111. Minimum Depth of Binary Tree            |               |
+| 2018-09-16    | 111. Minimum Depth of Binary Tree                     | :smirk:       |
 | 2018-09-16    | 279. Perfect Squares          |               |
-| 2018-09-16    | 733. Flood Fill               |               |
-| 2018-09-16    | 200. Number of Islands        |               |
-| 2018-09-16    | 130. Surrounded Regions       |               |
-| 2018-09-16    | 543. Diameter of Binary Tree  |               |
-| 2018-09-16    | 127. Word Ladder              |               |
+| 2018-09-16    | 733. Flood Fill               | :smirk:       |
+| 2018-09-16    | 200. Number of Islands        | :smirk:       |
+| 2018-09-16    | 130. Surrounded Regions       | :smirk:       |
+| 2018-09-16    | 543. Diameter of Binary Tree  | :star:        |
+| 2018-09-16    | 127. Word Ladder              | :star::star:  |
 | 2018-09-16    | 542. 01 Matrix                |               |
-| 2018-09-16    | 207. Course Schedule          |               |
-| 2018-09-16    | 210. Course Schedule II       |               |
+| 2018-09-16    | 207. Course Schedule          | :star:        |
+| 2018-09-16    | 210. Course Schedule II       | :star:        |
 |               |                               |               |
 | 2018-09-22    | 231. Power of Two             | :star:        |
 | 2018-09-22    | 762. Prime Number of Set Bits in Binary Representation  |               |
