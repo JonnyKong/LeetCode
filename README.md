@@ -29,3 +29,6 @@
 | 2018-09-30    | 455. Assign Cookies           |               |
 | 2018-09-30    | 55. Jump Game                 | :star:        |
 | 2018-09-30    | 45. Jump Game II              | :star::star:  |
+| 2018-10-02    | 376. Wiggle Subsequence       | :star::star:  |
+| 2018-10-02    | 406. Queue Reconstruction by Height                   | :star::star:  |
+| 2018-10-02    | 452. Minimum Number of Arrows to Burst Balloons       | :star::star:  |
