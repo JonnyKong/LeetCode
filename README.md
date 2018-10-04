@@ -32,3 +32,5 @@
 | 2018-10-02    | 376. Wiggle Subsequence       | :star::star:  |
 | 2018-10-02    | 406. Queue Reconstruction by Height                   | :star::star:  |
 | 2018-10-02    | 452. Minimum Number of Arrows to Burst Balloons       | :star::star:  |
+| 2018-10-04    | 402. Remove K Digitsalloons   | :star::star:  |
+| 2018-10-04    | 134. Gas Station              | :question:    |
