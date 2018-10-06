@@ -1,6 +1,5 @@
 /**
  * Messy binary search
- * 
  */
 
 #include <iostream>
