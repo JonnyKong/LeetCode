@@ -1,18 +1,40 @@
-//
-//  153. Find Minimum in Rotated Sorted Array.h
-//  
-//
-//  Created by Jonny Kong on 2/29/16.
-//
-//
+/**
+ * Very weird. Not typical binary search.
+ * 
+ * Split into multiple scenarios.
+ */
+
+#include <iostream>
+#include <vector>
+#include <cassert>
+
+using namespace std;
+
 
 class Solution {
 public:
     int findMin(vector<int>& nums) {
-        
-        for(int i = 0; i < nums.size() - 1; ++i) if(nums[i] > nums[i + 1]) return nums[i + 1];
-        
-        return nums[0];
-        
+        int lo = 0, hi = nums.size() - 1;
+        while(lo < hi) {
+
+            if (nums[lo] < nums[hi])
+                return nums[lo];
+
+            int mid = lo + (hi - lo) / 2;
+            int midValue = nums[mid];
+            if (midValue > nums[hi])
+                lo = mid + 1;
+            else if(midValue < nums[lo])
+                hi = mid;
+        }
+
+        return nums[lo];
     }
 };
+
+
+int main() {
+    vector<int> a = {2, 1};
+    int b = Solution().findMin(a);
+    cout << b << endl;
+}

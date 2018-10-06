@@ -37,3 +37,9 @@
 |               |                               |               |
 | 2018-10-05    | 658. Find K Closest Elements  | :star:        |
 | 2018-10-05    | 222. Count Complete Tree Nodes| :star:        |
+| 2018-10-05    | 69. Sqrt(x)                   | :star::star:  |
+| 2018-10-05    | 34. Find First and Last Position of Element in Sorted Array|          |
+| 2018-10-05    | 240. Search a 2D Matrix II    | :smirk:       |
+| 2018-10-05    | 153. Find Minimum in Rotated Sorted Array             | :question:    |
+| 2018-10-05    | 162. Find Peak Element        | :question:    |
+
