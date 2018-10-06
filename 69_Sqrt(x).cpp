@@ -49,6 +49,19 @@ public:
         }
         return ans - 1;
     }
+
+    int mySqrt2(int x) {
+        long long l = 0, r = x;
+        while (l < r) {
+            long long mid = l + (r - l + 1) / 2;
+            long long midValue = mid * mid;
+            if (midValue <= x)
+                l = mid;
+            else
+                r = mid - 1;
+        }
+        return r;
+    }
 };
 
 

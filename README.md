@@ -14,7 +14,7 @@
 | 2018-09-16    | 210. Course Schedule II       | :star:        |
 |               |                               |               |
 | 2018-09-22    | 231. Power of Two             | :star:        |
-| 2018-09-22    | 762. Prime Number of Set Bits in Binary Representation  |               |
+| 2018-09-22    | 762. Prime Number of Set Bits in Binary Representation  |             |               
 | 2018-09-22    | 136. Single Number            | :smirk:       |
 | 2018-09-22    | 476. Number Complement        |               |
 | 2018-09-22    | 137. Single Number II         | :star::star:  |
@@ -32,7 +32,7 @@
 | 2018-10-02    | 376. Wiggle Subsequence       | :star::star:  |
 | 2018-10-02    | 406. Queue Reconstruction by Height                   | :star::star:  |
 | 2018-10-02    | 452. Minimum Number of Arrows to Burst Balloons       | :star::star:  |
-| 2018-10-04    | 402. Remove K Digitsalloons   | :star::star:  |
+| 2018-10-04    | 402. Remove K Digits          | :star::star:  |
 | 2018-10-04    | 134. Gas Station              | :question:    |
 |               |                               |               |
 | 2018-10-05    | 658. Find K Closest Elements  | :star:        |
@@ -42,4 +42,9 @@
 | 2018-10-05    | 240. Search a 2D Matrix II    | :smirk:       |
 | 2018-10-05    | 153. Find Minimum in Rotated Sorted Array             | :question:    |
 | 2018-10-05    | 162. Find Peak Element        | :question:    |
+| 2018-10-06    | 155. Min Stack                |               |
+| 2018-10-06    | 496. Next Greater Element I   | :star:        |
+| 2018-10-06    | 42. Trapping Rain Water       | :star::star:  |
+|               |                               |               |
+| 2018-10-06    | 84. Largest Rectangle in Histogram                    | :star::star:  |
 

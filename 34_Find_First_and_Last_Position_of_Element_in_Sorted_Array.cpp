@@ -63,6 +63,54 @@ vector<int> Solution::searchRange(vector<int> &nums, int target) {
     return result;
 }
 
+class Solution2 {
+private:
+    int searchUpper(vector<int> &nums, int target) {
+        int l = -1, r = nums.size();
+        while (l < r) {
+            int mid = l + (r - l) / 2;
+            int midValue = nums[mid];
+            if (midValue <= target)
+                l = mid + 1;
+            else
+                r = mid;
+        }
+        return r - 1;
+    }
+    int searchLower(vector<int> &nums, int target) {
+        int l = -1, r = nums.size();
+        while (l < r) {
+            int mid = l + (r - l + 1) / 2;
+            int midValue = nums[mid];
+            if (midValue < target)
+                l = mid;
+            else
+                r = mid - 1;
+        }
+        return l + 1;
+    }
+
+public:
+    vector<int> searchRange(vector<int>& nums, int target) {
+        vector<int> result;
+        if (nums.empty()) {
+            result.push_back(-1);
+            result.push_back(-1);
+            return result;
+        }
+
+        int l = searchLower(nums, target);
+        int r = searchUpper(nums, target);
+        if (nums[l] == target && nums[r] == target) {
+            result.push_back(l);
+            result.push_back(r);
+        } else {
+            result.push_back(-1);
+            result.push_back(-1);
+        }
+        return result;
+    }
+};
 
 int main() {
     vector<int> a = {5,7,7,8,8,10};
