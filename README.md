@@ -34,3 +34,6 @@
 | 2018-10-02    | 452. Minimum Number of Arrows to Burst Balloons       | :star::star:  |
 | 2018-10-04    | 402. Remove K Digitsalloons   | :star::star:  |
 | 2018-10-04    | 134. Gas Station              | :question:    |
+|               |                               |               |
+| 2018-10-05    | 658. Find K Closest Elements  | :star:        |
+| 2018-10-05    | 222. Count Complete Tree Nodes| :star:        |
