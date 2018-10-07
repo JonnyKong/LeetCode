@@ -47,4 +47,4 @@
 | 2018-10-06    | 42. Trapping Rain Water       | :star::star:  |
 |               |                               |               |
 | 2018-10-06    | 84. Largest Rectangle in Histogram                    | :star::star:  |
-| 2018-10-06    | 475. Heateres                 |               |
+| 2018-10-06    | 475. Heaters                  |               |
