@@ -50,4 +50,4 @@
 | 2018-10-06    | 475. Heaters                  |               |
 
 Non-Leetcode:
-* __2-Sum Closest__: An Array of integers is given, both +ve and -ve. You need to find the two elements such that their sum is closest to zero.
+1. __2-Sum Closest__: An Array of integers is given, both +ve and -ve. You need to find the two elements such that their sum is closest to zero.
