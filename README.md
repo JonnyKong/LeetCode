@@ -50,6 +50,7 @@
 | 2018-10-06    | 475. Heaters                  |               |
 | 2018-10-07    | 15. 3Sum                      | :star:        |
 | 2018-10-07    | 16. 3Sum Closest              |               |
+| 2018-10-07    | 4. Median of Two Sorted Arrays| :star:        |
 
 Non-Leetcode:
 1. __2-Sum Closest__: An Array of integers is given, both +ve and -ve. You need to find the two elements such that their sum is closest to zero.

@@ -1,67 +1,73 @@
-//
-//  4.Median of Two Sorted Arrays.h
-//  Project 1
-//
-//  Created by Jonny Kong on 2/22/16.
-//  Copyright © 2016 Jonny Kong. All rights reserved.
-//
+/**
+ * See https://leetcode.com/problems/median-of-two-sorted-arrays/discuss/2481/Share-my-O(log(min(mn))-solution-with-explanation
+ *  for explanations. 
+ * 
+ * Very nasty details due to boundaries.
+ * 
+ * Trick: Make sure nums1 shorter than nums2, so that we don't have to set a
+ *  region for initial l and r.
+ */
 
-double median(vector<int> numbers){
-    
-    if(numbers.size() % 2) return numbers[numbers.size() / 2];
-    else return (double)(numbers[numbers.size() / 2] + numbers[numbers.size() / 2 - 1]) / 2;
-    
-}
+#include <iostream>
+#include <vector>
+#include <cassert>
 
-//a new vector<int> is created. integers in nums1 and nums2 are moved to this new vector in ascending order
-//the new vector is returned as the result
+using namespace std;
 
-double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
-    
-    if(nums1.empty()) return median(nums2);
-    else if(nums2.empty()) return median(nums1);
-    
-    vector<int> numbers;
-    numbers.resize(nums1.size() + nums2.size());
-    
-    vector<int>::iterator p = nums1.begin();
-    vector<int>::iterator q = nums2.begin();
-    
-    int i = 0;
-    
-    while(p != nums1.end() && q != nums2.end()){
-        
-        if(*p < *q) numbers[i++] = *p++;
-        
-        else numbers[i++] = *q++;
-        
-    }
-    
-    
-    if(p == nums1.end() && q == nums2.end());
-    
-    else if(p == nums1.end()){
-        
-        while(q != nums2.end()){
-            
-            numbers[i++] = *q++;
-            
+
+class Solution {
+public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+
+        /* Make sure nums1 shorter than nums2, so that we don't have to set
+         * a region for initial l and r */
+        if (nums1.size() > nums2.size()) {
+            vector<int> nums3 = nums2;
+            nums2 = nums1;
+            nums1 = nums3;
         }
-        
-    }
-    
-    else if(q == nums2.end()){
-        
-        while(p != nums1.end()){
-            
-            numbers[i++] = *p++;
-            
+
+        int l = 0, r = nums1.size();
+        int total_size = nums1.size() + nums2.size();
+        while (l < r) {
+            int mid = l + (r - l + 1) / 2;
+            /* If odd, left side contain 1 more element than right side, such
+             * that mid_other index does not reduce below 0 */
+            int mid_other = (total_size + 1) / 2 - mid;
+            if (mid_other < nums2.size() && nums1[mid - 1] > nums2[mid_other])
+                r = mid - 1;
+            else
+                l = mid;
         }
-        
+
+        int max_left = INT_MAX, min_right = INT_MIN;
+        if ((total_size + 1) / 2 - l == 0)
+            max_left = nums1[l - 1];
+        else if (l == 0)
+            max_left = nums2[(total_size + 1) / 2 - l - 1];
+        else
+            max_left = max(nums1[l - 1], nums2[(total_size + 1) / 2 - l - 1]);
+
+        if (l == nums1.size() && (total_size + 1) / 2 - l == nums2.size())
+            min_right = INT_MIN;
+        else if (l == nums1.size())
+            min_right = nums2[(total_size + 1) / 2 - l];
+        else if ((total_size + 1) / 2 - l == nums2.size())
+            min_right  = nums1[l];
+        else
+            min_right = min(nums1[l], nums2[(total_size + 1) / 2 - l]);
+
+        if (total_size % 2)
+            return max_left;
+        else
+            return (max_left + min_right) / 2.0;
     }
-    
-    if(i % 2) return numbers[i / 2];
-    
-    else return (double)(numbers[i / 2] + numbers[i / 2 - 1]) / 2;
-    
+};
+
+
+int main() {
+    vector<int> a = {1, 2, 4};
+    vector<int> b = {3};
+    cout << Solution().findMedianSortedArrays(a, b) << endl;
+    return 0;
 }
