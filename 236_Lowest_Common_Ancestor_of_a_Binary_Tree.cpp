@@ -1,13 +1,38 @@
 /**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
+ * Logistics: The behavior of the function is:
+ * If both node is in subtree, return common ancestor
+ * If either node is in subtree, return this node
+ * Else return NULL.
  */
+
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+
 class Solution {
+public:
+
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if (!root || root == p || root == q)
+            return root;
+        
+        TreeNode *left = lowestCommonAncestor(root -> left, p, q);
+        TreeNode *right = lowestCommonAncestor(root -> right, p, q);
+
+        if (left && right)
+            return root;
+        else
+            return left ? left : right;
+    }
+};
+
+
+
+
+class Solution2 {
 public:
     bool dfs(TreeNode *root, const TreeNode *target, vector<TreeNode *> & path) {
 
