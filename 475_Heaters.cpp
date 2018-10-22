@@ -42,6 +42,56 @@ public:
     }
 };
 
+/**
+ * Solution2: Use binary search
+ */
+
+class Solution2 {
+private:
+    int binarySearch(const vector<int> &stores, int target) {
+        if (target < stores[0])
+            return -1;
+        
+        int l = 0, r = stores.size() - 1;
+        while (l < r) {
+            int mid = l + (r - l + 1) / 2 ;
+            int mid_value = stores[mid];
+            if (mid_value <= target)
+                l = mid;
+            else
+                r = mid - 1;
+        }
+        return l;
+    }
+    
+public:
+    int findRadius(vector<int>& houses, vector<int>& heaters) {
+        sort(heaters.begin(), heaters.end());
+        int radius = 0;
+        for (int i = 0; i < houses.size(); ++i) {
+            int pos_l = binarySearch(heaters, houses[i]), pos_r;
+            if (heaters[pos_l] == houses[i])
+                pos_r = pos_l;
+            else if (pos_l + 1 < heaters.size())
+                pos_r = pos_l + 1;
+            else
+                pos_r = -1;
+
+            int radius_cur;
+            if (pos_l >= 0 && pos_r >= 0)
+                radius_cur = min(houses[i] - heaters[pos_l], heaters[pos_r] - houses[i]);
+            else if (pos_l >= 0)
+                radius_cur = houses[i] - heaters[pos_l];
+            else
+                radius_cur = heaters[pos_r] - houses[i];
+                
+            radius = radius_cur > radius ? radius_cur : radius;
+        }
+        return radius;
+    }
+};
+
+
 
 int main() {
     vector<int> houses = {1,1,1,1,1,1,999,999,999,999,999};
