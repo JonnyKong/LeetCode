@@ -6,6 +6,9 @@
 //  Copyright © 2016 Jonny Kong. All rights reserved.
 //
 
+#include <iostream>
+using namespace std;
+
 double myPow(double x, int n) {
     
     if(!n) return 1;
@@ -36,4 +39,30 @@ double myPow(double x, int n) {
     if(sign1 > 0) return result * sign;
     else return 1 / (result * sign);
     
+}
+
+class Solution2 {
+public:
+    double myPow(double x, int n) {
+        if (n == 0)
+            return 1;
+        else if (n == 1)
+            return x;
+        else if (n % 2 == 0) {
+            double tmp = myPow(x, n / 2);
+            return tmp * tmp;
+        }
+        else {
+            double tmp = myPow(x, n / 2);
+            if (n > 0)
+                return tmp * tmp * x;
+            else
+                return tmp * tmp / x;
+        }
+    }
+};
+
+int main() {
+    double result = Solution2().myPow(2.1, 3);
+    cout << result << endl;
 }
