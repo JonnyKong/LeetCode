@@ -6,8 +6,4 @@
 //  Copyright © 2016 Jonny Kong. All rights reserved.
 //
 
-void deleteNode(ListNode* node) {
-    
-    memcpy(node, node -> next, 16);
-    
-}
+void deleteNode(ListNode* node) { memcpy(node, node->next, 16); }

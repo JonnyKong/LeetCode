@@ -6,8 +6,4 @@
 //  Copyright © 2016 Jonny Kong. All rights reserved.
 //
 
-int trailingZeroes(int n) {
-    
-    return n ? n / 5 + trailingZeroes(n / 5) : 0;
-    
-}
+int trailingZeroes(int n) { return n ? n / 5 + trailingZeroes(n / 5) : 0; }

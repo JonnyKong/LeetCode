@@ -7,14 +7,12 @@
 //
 
 void rotate(vector<int>& nums, int k) {
-    
-    if(nums.size() == 1) return;
-    
-    int size = nums.size();
-    
-    while(k >= size) k -= size;
-    
-    nums.insert(nums.begin(), nums.end() - k, nums.end());
-    nums.resize(size);
-    
+  if (nums.size() == 1) return;
+
+  int size = nums.size();
+
+  while (k >= size) k -= size;
+
+  nums.insert(nums.begin(), nums.end() - k, nums.end());
+  nums.resize(size);
 }

@@ -7,47 +7,40 @@
 //
 
 ListNode* removeNthFromEnd(ListNode* head, int n) {
-    
-    int i = 0;
-    
-    ListNode* p = head;
-    
-    while(p -> next){
-        
-        p = p -> next;
-        
-        ++i;
-        
+  int i = 0;
+
+  ListNode* p = head;
+
+  while (p->next) {
+    p = p->next;
+
+    ++i;
+  }
+
+  if (i == 0)
+    return NULL;  // only one node
+
+  else if (i == 1) {
+    if (n == 1) {
+      head->next = NULL;
+
+      return head;
+
     }
-    
-    if(i == 0) return NULL; //only one node
-    
-    else if(i == 1){
-        
-        if(n == 1){
-            
-            head -> next = NULL;
-            
-            return head;
-            
-        }
-        
-        else return head -> next;
-        
-    }
-    
-    if(i == n - 1) return head -> next;
-    
-    p = head;
-    
-    for(int j=0; j < i - n; ++j){
-        
-        p = p -> next;
-        
-    }
-    
-    p -> next = p -> next -> next;
-    
-    return head;
-    
+
+    else
+      return head->next;
+  }
+
+  if (i == n - 1) return head->next;
+
+  p = head;
+
+  for (int j = 0; j < i - n; ++j) {
+    p = p->next;
+  }
+
+  p->next = p->next->next;
+
+  return head;
 }

@@ -7,11 +7,11 @@
 //
 
 int hammingWeight(uint32_t n) {
-    unsigned int i = 1;
-    int result = 0;
-    for(int j=0; j<32; j++){
-        if(i & n) result++;
-        i <<= 1;
-    }
-    return result;
+  unsigned int i = 1;
+  int result = 0;
+  for (int j = 0; j < 32; j++) {
+    if (i & n) result++;
+    i <<= 1;
+  }
+  return result;
 }

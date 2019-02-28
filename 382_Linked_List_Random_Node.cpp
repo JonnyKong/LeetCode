@@ -7,18 +7,18 @@
  * };
  */
 class Solution {
-    vector<int> copy;
-public:
-    /** @param head The linked list's head.
-     Note that the head is guaranteed to be not null, so it contains at least one node. */
-    Solution(ListNode* head) {
-        for(auto p = head; p; p = p -> next) copy.push_back(p -> val);
-    }
-    
-    /** Returns a random node's value. */
-    int getRandom() {
-        return copy[rand() % copy.size()];
-    }
+  vector<int> copy;
+
+ public:
+  /** @param head The linked list's head.
+   Note that the head is guaranteed to be not null, so it contains at least one
+   node. */
+  Solution(ListNode* head) {
+    for (auto p = head; p; p = p->next) copy.push_back(p->val);
+  }
+
+  /** Returns a random node's value. */
+  int getRandom() { return copy[rand() % copy.size()]; }
 };
 
 /**

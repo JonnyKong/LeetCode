@@ -8,36 +8,34 @@
  * };
  */
 class BSTIterator {
-private:
-    TreeNode* p;
-    stack<TreeNode*> address;
-    
-public:
-    BSTIterator(TreeNode *root) : p(root) {
-        //while(!address.empty()) address.pop();
-        while(p){
-            address.push(p);
-            p = p -> left;
-        }
-    }
+ private:
+  TreeNode* p;
+  stack<TreeNode*> address;
 
-    /** @return whether we have a next smallest number */
-    bool hasNext() {
-        return !address.empty();
+ public:
+  BSTIterator(TreeNode* root) : p(root) {
+    // while(!address.empty()) address.pop();
+    while (p) {
+      address.push(p);
+      p = p->left;
     }
+  }
 
-    /** @return the next smallest number */
-    int next() {
-        p = address.top();
-        address.pop();
-        int val = p -> val;
-        p = p -> right;
-        while(p){
-            address.push(p);
-            p = p -> left;
-        }
-        return val;
+  /** @return whether we have a next smallest number */
+  bool hasNext() { return !address.empty(); }
+
+  /** @return the next smallest number */
+  int next() {
+    p = address.top();
+    address.pop();
+    int val = p->val;
+    p = p->right;
+    while (p) {
+      address.push(p);
+      p = p->left;
     }
+    return val;
+  }
 };
 
 /**

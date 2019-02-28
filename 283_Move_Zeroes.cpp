@@ -7,25 +7,21 @@
 //
 
 void moveZeroes(vector<int>& nums) {
-    
-    vector<int>::iterator a = nums.begin();
-    
-    int i=0;
-    
-    while(a != nums.end()){
-        
-        if(*a == 0){
-            
-            ++i;
-            
-            nums.erase(a);
-            
-        }
-        
-        else ++a;
-        
+  vector<int>::iterator a = nums.begin();
+
+  int i = 0;
+
+  while (a != nums.end()) {
+    if (*a == 0) {
+      ++i;
+
+      nums.erase(a);
+
     }
-    
-    for(int j=0; j<i; ++j) nums.push_back(0);
-    
+
+    else
+      ++a;
+  }
+
+  for (int j = 0; j < i; ++j) nums.push_back(0);
 }

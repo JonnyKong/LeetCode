@@ -7,16 +7,14 @@
 //
 
 TreeNode* invertTree(TreeNode* root) {
-    
-    if(!root) return NULL;
-    else if(!root -> left && !root->right) return root;
-    else{
-        
-        TreeNode* temp = root -> left;
-        root -> left = invertTree(root -> right);
-        root -> right = invertTree(temp);
-        return root;
-        
-    }
-    
+  if (!root)
+    return NULL;
+  else if (!root->left && !root->right)
+    return root;
+  else {
+    TreeNode* temp = root->left;
+    root->left = invertTree(root->right);
+    root->right = invertTree(temp);
+    return root;
+  }
 }

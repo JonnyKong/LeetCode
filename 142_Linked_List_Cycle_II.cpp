@@ -7,24 +7,25 @@
  * };
  */
 class Solution {
-public:
-    ListNode *detectCycle(ListNode *head) {
-        if(!head) return NULL;
-        ListNode* p = head;
-        ListNode* q = head;
-        while(1){
-            if(q -> next == NULL || q -> next -> next == NULL) return NULL;
-            else{
-                p = p -> next;
-                q = q -> next -> next;
-            }
-            if(p == q) break;
-        }
-        p = head;
-        while(p != q){
-            p = p -> next;
-            q = q -> next;
-        }
-        return p;
+ public:
+  ListNode* detectCycle(ListNode* head) {
+    if (!head) return NULL;
+    ListNode* p = head;
+    ListNode* q = head;
+    while (1) {
+      if (q->next == NULL || q->next->next == NULL)
+        return NULL;
+      else {
+        p = p->next;
+        q = q->next->next;
+      }
+      if (p == q) break;
     }
+    p = head;
+    while (p != q) {
+      p = p->next;
+      q = q->next;
+    }
+    return p;
+  }
 };

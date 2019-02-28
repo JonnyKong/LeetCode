@@ -6,24 +6,23 @@
 //
 
 class Solution {
-public:
-    int removeDuplicates(vector<int> & nums) {
-        
-        // Sanity check
-        if(nums.empty()) return 0;
+ public:
+  int removeDuplicates(vector<int>& nums) {
+    // Sanity check
+    if (nums.empty()) return 0;
 
-        // Construct iterator
-        auto slow = nums.begin();
-        auto fast = nums.begin();
-        
-        // Traverse the whole list
-        while(1) {
-            while((fast - nums.begin()) + 1 < nums.size() && *fast == *(fast + 1)) {
-                *(slow++) = *(fast++);
-            }
-            if((fast - nums.begin()) == nums.size()) {
-                return slow - nums.begin();
-            }
-        }
+    // Construct iterator
+    auto slow = nums.begin();
+    auto fast = nums.begin();
+
+    // Traverse the whole list
+    while (1) {
+      while ((fast - nums.begin()) + 1 < nums.size() && *fast == *(fast + 1)) {
+        *(slow++) = *(fast++);
+      }
+      if ((fast - nums.begin()) == nums.size()) {
+        return slow - nums.begin();
+      }
     }
+  }
 };

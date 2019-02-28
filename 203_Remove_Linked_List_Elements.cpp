@@ -7,41 +7,32 @@
 //
 
 struct ListNode* removeElements(struct ListNode* head, int val) {
-    
-    if(!head) return NULL;
-    
-    struct ListNode * p = head -> next;
-    
-    struct ListNode * q = head;
-    
-    while(head -> val == val){
-        
-        head = head -> next;
-        
-        if(!head) return NULL;
-        
+  if (!head) return NULL;
+
+  struct ListNode* p = head->next;
+
+  struct ListNode* q = head;
+
+  while (head->val == val) {
+    head = head->next;
+
+    if (!head) return NULL;
+  }
+
+  while (p) {
+    if (p->val == val) {
+      p = p->next;
+
+      q->next = p;
+
     }
-    
-    while(p){
-        
-        if(p -> val == val){
-            
-            p = p -> next;
-            
-            q -> next = p;
-            
-        }
-        
-        else{
-            
-            q = p;
-            
-            p = p -> next;
-            
-        }
-        
+
+    else {
+      q = p;
+
+      p = p->next;
     }
-    
-    return head;
-    
+  }
+
+  return head;
 }

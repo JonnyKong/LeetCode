@@ -7,10 +7,9 @@
 //
 
 bool isPowerOfThree(int n) {
-    int i=0;
-    for(int i=0; i<30; i++){
-        if(n == pow(3, i))
-            return 1;
-    }
-    return 0;
+  int i = 0;
+  for (int i = 0; i < 30; i++) {
+    if (n == pow(3, i)) return 1;
+  }
+  return 0;
 }

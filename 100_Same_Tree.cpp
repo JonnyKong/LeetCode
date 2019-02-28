@@ -7,15 +7,18 @@
 //
 
 bool isSameTree(TreeNode* p, TreeNode* q) {
-    
-    if(!p && !q) return 1;
-    
-    else if(!p) return 0;
-    
-    else if(!q) return 0;
-    
-    else if(q -> val != p -> val) return 0;
-    
-    else return( isSameTree(p -> left, q -> left) && isSameTree(p -> right, q -> right) );
-    
+  if (!p && !q)
+    return 1;
+
+  else if (!p)
+    return 0;
+
+  else if (!q)
+    return 0;
+
+  else if (q->val != p->val)
+    return 0;
+
+  else
+    return (isSameTree(p->left, q->left) && isSameTree(p->right, q->right));
 }

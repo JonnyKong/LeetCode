@@ -1,35 +1,38 @@
 class RandomizedSet {
-    unordered_set<int> a;
-public:
-    /** Initialize your data structure here. */
-    RandomizedSet() {
-        
+  unordered_set<int> a;
+
+ public:
+  /** Initialize your data structure here. */
+  RandomizedSet() {}
+
+  /** Inserts a value to the set. Returns true if the set did not already
+   * contain the specified element. */
+  bool insert(int val) {
+    if (a.find(val) != a.end())
+      return 0;
+    else {
+      a.insert(val);
+      return 1;
     }
-    
-    /** Inserts a value to the set. Returns true if the set did not already contain the specified element. */
-    bool insert(int val) {
-        if(a.find(val) != a.end()) return 0;
-        else {
-            a.insert(val);
-            return 1;
-        }
+  }
+
+  /** Removes a value from the set. Returns true if the set contained the
+   * specified element. */
+  bool remove(int val) {
+    if (a.find(val) == a.end())
+      return 0;
+    else {
+      a.erase(val);
+      return 1;
     }
-    
-    /** Removes a value from the set. Returns true if the set contained the specified element. */
-    bool remove(int val) {
-        if(a.find(val) == a.end()) return 0;
-        else {
-            a.erase(val);
-            return 1;
-        }
-    }
-    
-    /** Get a random element from the set. */
-    int getRandom() {
-        auto p = a.begin();
-        advance(p, rand() % a.size());
-        return *p;
-    }
+  }
+
+  /** Get a random element from the set. */
+  int getRandom() {
+    auto p = a.begin();
+    advance(p, rand() % a.size());
+    return *p;
+  }
 };
 
 /**

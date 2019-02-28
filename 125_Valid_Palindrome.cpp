@@ -7,17 +7,13 @@
 //
 
 bool isPalindrome(string s) {
-    
-    int i = 0, j = s.length() - 1;
-    
-    while(i < j){
-        
-        while(a[i] == ' ') ++i; //stepping over spaces;
-        while(a[j] == ' ') --j;
-        
-        if(a[i] >= 'A' && a[i] <= 'Z') a[i] += 32;
-        if(a[j] >= 'A' && a[j] <= 'Z') a[i] += 32;
-        
-    }
-    
+  int i = 0, j = s.length() - 1;
+
+  while (i < j) {
+    while (a[i] == ' ') ++i;  // stepping over spaces;
+    while (a[j] == ' ') --j;
+
+    if (a[i] >= 'A' && a[i] <= 'Z') a[i] += 32;
+    if (a[j] >= 'A' && a[j] <= 'Z') a[i] += 32;
+  }
 }

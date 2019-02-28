@@ -6,8 +6,4 @@
 //  Copyright © 2016 Jonny Kong. All rights reserved.
 //
 
-int strStr(string haystack, string needle) {
-    
-    return haystack.find(needle);
-    
-}
+int strStr(string haystack, string needle) { return haystack.find(needle); }

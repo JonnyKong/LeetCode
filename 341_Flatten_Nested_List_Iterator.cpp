@@ -3,43 +3,44 @@
  * // You should not implement it, or speculate about its implementation
  * class NestedInteger {
  *   public:
- *     // Return true if this NestedInteger holds a single integer, rather than a nested list.
- *     bool isInteger() const;
+ *     // Return true if this NestedInteger holds a single integer, rather than
+ * a nested list. bool isInteger() const;
  *
- *     // Return the single integer that this NestedInteger holds, if it holds a single integer
+ *     // Return the single integer that this NestedInteger holds, if it holds a
+ * single integer
  *     // The result is undefined if this NestedInteger holds a nested list
  *     int getInteger() const;
  *
- *     // Return the nested list that this NestedInteger holds, if it holds a nested list
+ *     // Return the nested list that this NestedInteger holds, if it holds a
+ * nested list
  *     // The result is undefined if this NestedInteger holds a single integer
  *     const vector<NestedInteger> &getList() const;
  * };
  */
 class NestedIterator {
-private:
-    void dfsConstruct(const vector<NestedInteger> &nestedList){
-        for(const auto & p : nestedList){
-            if(p.isInteger()) result_.push_back(p.getInteger());
-            else dfsConstruct(p.getList());
-        }
+ private:
+  void dfsConstruct(const vector<NestedInteger> &nestedList) {
+    for (const auto &p : nestedList) {
+      if (p.isInteger())
+        result_.push_back(p.getInteger());
+      else
+        dfsConstruct(p.getList());
     }
-    
-    vector<int> result_;
-    int index;
-public:
-    NestedIterator(vector<NestedInteger> &nestedList) {
-        result_.clear();
-        dfsConstruct(nestedList);
-        index = 0;
-    }
+  }
 
-    int next() {
-        return result_[index++];
-    }
+  vector<int> result_;
+  int index;
 
-    bool hasNext() {
-        return index < result_.size();
-    }
+ public:
+  NestedIterator(vector<NestedInteger> &nestedList) {
+    result_.clear();
+    dfsConstruct(nestedList);
+    index = 0;
+  }
+
+  int next() { return result_[index++]; }
+
+  bool hasNext() { return index < result_.size(); }
 };
 
 /**

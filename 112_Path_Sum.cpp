@@ -6,11 +6,12 @@
 //  Copyright © 2016 Jonny Kong. All rights reserved.
 //
 
-
 bool hasPathSum(TreeNode* root, int sum) {
-    
-    if(!root) return 0;
-    else if(root -> left == NULL && root -> right == NULL) return sum == root -> val;
-    else return(hasPathSum(root -> left, sum - root -> val) || hasPathSum(root -> right, sum - root -> val));
-    
+  if (!root)
+    return 0;
+  else if (root->left == NULL && root->right == NULL)
+    return sum == root->val;
+  else
+    return (hasPathSum(root->left, sum - root->val) ||
+            hasPathSum(root->right, sum - root->val));
 }

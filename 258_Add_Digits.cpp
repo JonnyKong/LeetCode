@@ -6,8 +6,4 @@
 //  Copyright © 2016 Jonny Kong. All rights reserved.
 //
 
-int addDigits(int num) {
-    
-    return num - 9 * (int)((num - 1) / 9);
-    
-}
+int addDigits(int num) { return num - 9 * (int)((num - 1) / 9); }
