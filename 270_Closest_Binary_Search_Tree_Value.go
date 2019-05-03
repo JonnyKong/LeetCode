@@ -7,21 +7,21 @@
  * }
  */
 import (
-	"math"
-	"fmt"
+    "math"
+    "fmt"
 )
 
 func closestValue(root *TreeNode, target float64) int {
-	ret := root.Val
-	for root != nil {
-		if math.Abs(target - float64(root.Val)) < math.Abs(float64(ret) - target) {
-			ret = root.Val
-		}
-		if target < float64(root.Val) {
-			root = root.Left
-		} else {
-			root = root.Right
-		}
-	}
-	return ret
+    ret := root.Val
+    for root != nil {
+        if math.Abs(target - float64(root.Val)) < math.Abs(float64(ret) - target) {
+            ret = root.Val
+        }
+        if target < float64(root.Val) {
+            root = root.Left
+        } else {
+            root = root.Right
+        }
+    }
+    return ret
 }
