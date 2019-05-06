@@ -1,4 +1,4 @@
-package main
+// package main
 
 import (
 	"fmt"
@@ -35,9 +35,9 @@ func canWinHelper(b *[]byte, cache map[string]bool) bool {
 	return false
 }
 
-func main() {
-	s := "++++"
-	if canWin(s) {
-		fmt.Printf("Success\n")
-	}
-}
+// func main() {
+// 	s := "++++"
+// 	if canWin(s) {
+// 		fmt.Printf("Success\n")
+// 	}
+// }
