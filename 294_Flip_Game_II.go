@@ -38,6 +38,6 @@ func canWinHelper(b *[]byte, cache map[string]bool) bool {
 func main() {
 	s := "++++"
 	if canWin(s) {
-		fmt.Printf("666\n")
+		fmt.Printf("Success\n")
 	}
 }
