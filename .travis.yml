@@ -12,4 +12,5 @@ addons:
       - g++-6
       - clang-3.8
 script:
+  - cmake .
   - make
