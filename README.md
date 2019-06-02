@@ -1,4 +1,7 @@
 # Leetcode
+
+[![Build Status](https://travis-ci.org/JonnyKong/LeetCode.svg?branch=master)](https://travis-ci.org/JonnyKong/LeetCode)
+
 [Statistics](./Statistics.csv)
 
 ## Non-Leetcode:
