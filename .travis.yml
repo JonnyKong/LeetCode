@@ -1,16 +1,25 @@
 sudo: false
 language: cpp
-compiler:
-  - gcc
-  - clang
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-      - llvm-toolchain-precise-3.8
-    packages:
-      - g++-6
-      - clang-3.8
+matrix:
+  include:
+    - os: linux
+      addons:
+        sources:
+          - ubuntu-toolchain-r-test
+          - llvm-toolchain-precise-3.6
+        package:
+          - clang-3.8
+      env:
+        MATRIX_EVAL="CC=clang-3.8 && CXX=clang++-3.8"
+    - os: linux
+      addons:
+        sources:
+          - ubuntu-toolchain-r-test
+          - llvm-toolchain-precise-3.6
+        package:
+          - g++-7
+      env:
+        MATRIX_EVAL="CC gcc-7 && CXX=g++-7"
 script:
   - cmake .
   - make
