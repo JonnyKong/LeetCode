@@ -7,11 +7,11 @@ matrix:
       addons:
         sources:
           - ubuntu-toolchain-r-test
-          - llvm-toolchain-precise-3.6
+          - llvm-toolchain-precise-3.8
         package:
           - clang-3.8
       env:
-        MATRIX_EVAL="CC=clang-3.8 && CXX=clang++-3.8"
+        COMPILER=clang++-3.8
     - os: linux
       addons:
         sources:
@@ -19,7 +19,7 @@ matrix:
         package:
           - g++-7
       env:
-        MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
+        COMPILER=g++-7
 
 before_install:
     - eval "${MATRIX_EVAL}"
