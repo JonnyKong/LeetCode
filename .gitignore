@@ -39,3 +39,6 @@ test.cpp
 test
 Solution.java
 Solution.class
+
+# Build
+build/
