@@ -42,3 +42,6 @@ Solution.class
 
 # Build
 build/
+*.xml
+*.iml
+.idea/
