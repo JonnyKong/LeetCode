@@ -29,3 +29,28 @@ class Solution {
 
     }
 }
+
+// 2023-12-27
+class Solution2 {
+public:
+    void dfs(int k, int n, vector<int> current, vector<vector<int>> & results, int next) {
+        if (k == 0 && n == 0) {
+            results.push_back(current);
+            return;
+        } else if (k == 0 || n == 0) {
+            return;
+        }
+
+        for (int i = next; i <= 9; i++) {
+            current.push_back(i);
+            dfs(k - 1, n - i, current, results, i + 1);
+            current.pop_back();
+        }
+    }
+
+    vector<vector<int>> combinationSum3(int k, int n) {
+        vector<vector<int>> results;
+        dfs(k, n, vector<int>(), results, 1);
+        return results;
+    }
+};

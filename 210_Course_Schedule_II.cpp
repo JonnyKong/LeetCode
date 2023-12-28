@@ -70,3 +70,44 @@ class Solution {
     return a.topoSort();
   }
 };
+
+// 2023-12-27
+class Solution2 {
+public:
+    bool dfs(unordered_map<int, vector<int>> & graph, vector<int> & visited, vector<int> & result, int i) {
+        if (visited[i] == 2) {
+            return true;
+        } else if (visited[i] == 1) {
+            return false;
+        }
+
+        visited[i] = 1;
+        for (int neighbor : graph[i]) {
+            if (!dfs(graph, visited, result, neighbor)) {
+                return false;
+            }
+        }
+        visited[i] = 2;
+        result.push_back(i);
+        return true;
+    }
+
+    vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {
+        unordered_map<int, vector<int>> graph(numCourses);
+        for (auto p : prerequisites) {
+            graph[p[1]].push_back(p[0]);
+        }
+
+        vector<int> visited(numCourses, 0); // 0 not visited, 1 visiting, 2 visited    
+        vector<int> result;
+
+        for (int i = 0; i < numCourses; i++) {
+            if (!dfs(graph, visited, result, i)) {
+                return vector<int>();
+            }
+        }
+        std::reverse(result.begin(), result.end());
+        return result;
+        
+    }
+};
