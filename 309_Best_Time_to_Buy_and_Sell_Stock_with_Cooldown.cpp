@@ -29,3 +29,26 @@ class Solution {
     return maxProfit[i - 1];
   }
 };
+
+
+// 2023-12-29
+class Solution2 {
+public:
+    int maxProfit(vector<int>& prices) {
+        vector<int> buy_or_hold = vector<int>(prices.size());    
+        vector<int> sell = vector<int>(prices.size());    
+        vector<int> cool = vector<int>(prices.size());    
+
+        buy_or_hold[0] = -1 * prices[0];
+        sell[0] = 0;
+        cool[0] = 0;
+
+        for (int i = 1; i < prices.size(); i++) {
+            buy_or_hold[i] = max(buy_or_hold[i - 1], cool[i - 1] - prices[i]);
+            sell[i] = buy_or_hold[i - 1] + prices[i];
+            cool[i] = max(cool[i - 1], sell[i - 1]);
+        }
+
+        return *max_element(sell.begin(), sell.end());
+    }
+};

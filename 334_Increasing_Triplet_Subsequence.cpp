@@ -50,3 +50,27 @@ class Solution {
     return 0;
   }
 };
+
+// 2023-12-29
+class Solution2 {
+public:
+    bool increasingTriplet(vector<int>& nums) {
+        if (nums.size() < 3) {
+            return false;
+        }
+
+        int small = 0x7fffffff;
+        int big = 0x7fffffff;
+
+        for (int n : nums) {
+            if (n <= small) {
+                small = n;
+            } else if (n <= big) {
+                big = n;
+            } else {
+                return true;
+            }
+        }
+        return false;
+    }
+};
