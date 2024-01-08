@@ -65,7 +65,83 @@ public:
     }
 };
 
+// 2024-01-07
+class Solution2 {
+public:
+    vector<int> findLongestPath(int n, const vector<vector<int>> & adjList, int sourceNode) {
+        vector<bool> visited(n, false);
+        vector<int> depth(n, 0);
+        vector<int> from(n, 0);
+        stack<int> stk;
+        int maxDepth = 0;
+        int maxDepthNode = sourceNode;
+
+        stk.push(sourceNode);
+
+        while (stk.size() > 0) {
+            int node = stk.top();
+            stk.pop();
+            visited[node] = true;
+
+            for (int e : adjList[node]) {
+                if (!visited[e]) {
+                    from[e] = node;
+                    depth[e] = depth[node] + 1;
+                    
+                    if (depth[e] > maxDepth) {
+                        maxDepth = depth[e];
+                        maxDepthNode = e;
+                    }
+
+                    stk.push(e);
+                }
+            }
+        }
+
+        vector<int> ret;
+        for (int node = maxDepthNode; node != sourceNode; node = from[node]) {
+            ret.push_back(node);
+        }
+        ret.push_back(sourceNode);
+        reverse(ret.begin(), ret.end());
+        return ret;
+    }
+
+    vector<vector<int>> buildAdjList(int n, const vector<vector<int>>& edges) {
+        vector<vector<int>> adjList(n);
+        for (auto edge : edges) {
+            adjList[edge[0]].push_back(edge[1]);
+            adjList[edge[1]].push_back(edge[0]);
+        }
+        return adjList;
+    }
+
+    vector<int> findMinHeightTrees(int n, vector<vector<int>>& edges) {
+        auto adjList = buildAdjList(n, edges);
+        
+        int randomSourceNode = 0;
+        auto longestPath1 = findLongestPath(n, adjList, randomSourceNode);
+        auto longestPath2 = findLongestPath(n, adjList, longestPath1.back());
+
+        if (longestPath2.size() % 2 == 1) {
+            return {longestPath2[(longestPath2.size() - 1) / 2]};
+        } else {
+            return {
+                longestPath2[longestPath2.size() / 2],
+                longestPath2[longestPath2.size() / 2 - 1]
+            };
+        }
+        return {};
+    }
+};
+
 /*
+Idea 1:
+1. Find the farthest leaf from any node
+2. Find the farthest leaf from the node found above, which yields a maximum
+path, on which the center one or two nodes are the center
+
+Idea 2:
 BFS from leaves. When visiting each leaf, remove it from the tree, so some other
 nodes become leaves, then BFS on the new leaves. This is different from BFS
 simply based on the neighbor. Return the nodes used in the

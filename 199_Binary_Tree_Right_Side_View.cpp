@@ -40,3 +40,36 @@ class Solution {
     return result;
   }
 };
+
+// 2024-01-07
+class Solution2 {
+// BFS
+public:
+    vector<int> rightSideView(TreeNode* root) {
+        if (root == NULL) {
+            return {};
+        }
+
+        queue<TreeNode*> q;
+        q.push(root);
+
+        vector<int> ret;
+        while (!q.empty()) {
+            ret.push_back(q.back()->val); 
+
+            int sz = q.size();
+            for (int i = 0; i < sz; i++) {
+                auto node = q.front();
+                q.pop();
+
+                if (node->left) {
+                    q.push(node->left);
+                }
+                if (node->right) {
+                    q.push(node->right);
+                }
+            }
+        }
+        return ret;
+    }
+};

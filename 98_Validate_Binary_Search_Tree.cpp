@@ -19,3 +19,40 @@ class Solution {
     return 1;
   }
 };
+
+// 2024-01-07
+class Solution2 {
+public:
+    Result getMinMax(TreeNode *root) {
+        // Assumes input is non-NULL
+
+        Result leftMinMax;
+        if (root->left) {
+            leftMinMax = getMinMax(root->left);
+            if (!leftMinMax.isValid || leftMinMax.maxVal >= root->val) {
+                return Result{0, 0, false};
+            }
+        }
+
+        Result rightMinMax;
+        if (root->right) {
+            rightMinMax = getMinMax(root->right);
+            if (!rightMinMax.isValid || rightMinMax.minVal <= root->val) {
+                return Result{0, 0, false};
+            }
+        }
+
+        return Result{
+            root->left ? leftMinMax.minVal : root->val,
+            root->right ? rightMinMax.maxVal : root->val,
+            true};
+    }
+
+    bool isValidBST(TreeNode* root) {
+        if (root == NULL) {
+            return true;
+        } else {
+            return getMinMax(root).isValid;
+        }
+    }
+};

@@ -25,3 +25,42 @@ void moveZeroes(vector<int>& nums) {
 
   for (int j = 0; j < i; ++j) nums.push_back(0);
 }
+
+// 2024-01-07
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        // Fast only reads, slow writes, so places travelled by fast has not been altered by slow
+        int slow = 0;
+        int fast = 0;
+        
+        while (fast < nums.size()) {
+            if (nums[fast] != 0) {
+                nums[slow] = nums[fast];
+                slow++;
+            }
+            fast++;
+        }
+
+        while (slow < nums.size()) {
+            nums[slow] = 0;
+            slow++;
+        }
+    }
+};
+
+/*
+if arr[fast] > 0:
+    arr[slow] = arr[fast]
+    Slow advances
+Fast advances
+    
+
+0  1  0  3  12
+fs
+s  f
+   s  f
+   s     f
+      s      f
+
+*/

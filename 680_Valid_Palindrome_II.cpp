@@ -22,3 +22,31 @@ class Solution {
     return true;
   }
 };
+
+
+// 2024-01-07
+class Solution2 {
+public:
+  // Two pointers from opposite directions. Once differ, only two choices:
+  // remove one from either left or right
+  bool validPalindrome(string s) {
+    int l = 0, r = s.size() - 1;
+    int deleted = false;
+    while (l < r) {
+      if (s[l] == s[r]) {
+        l++;
+        r--;
+      } else {
+        return validPalindromeWithoutDeletion(s.substr(l, r - l)) ||
+               validPalindromeWithoutDeletion(s.substr(l + 1, r - l));
+      }
+    }
+    return true;
+    }
+
+    bool validPalindromeWithoutDeletion(string s) {
+        string sRev = s;
+        reverse(sRev.begin(), sRev.end());
+        return s == sRev;
+    }
+};
