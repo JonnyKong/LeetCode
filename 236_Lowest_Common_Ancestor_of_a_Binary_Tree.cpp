@@ -68,3 +68,23 @@ class Solution2 {
     return last_common(path_a, path_b);
   }
 };
+
+// 2024-01-09
+class Solution3 {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        // If both p or q exists, return their LCA
+        // If only p or q exists, return p or q
+        if (root == NULL || root == p || root == q) {
+            return root;
+        } else {
+            TreeNode* left = lowestCommonAncestor(root->left, p, q);
+            TreeNode* right = lowestCommonAncestor(root->right, p, q);
+            if (left && right) {
+                return root;
+            } else {
+                return left ? left : right;
+            }
+        }
+    }
+};

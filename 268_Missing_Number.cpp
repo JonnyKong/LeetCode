@@ -53,3 +53,16 @@ int main() {
   int result = Solution().missingNumber(input);
   cout << result << endl;
 }
+
+// 2024-01-09
+class Solution {
+public:
+  // Calculated expected sum of 1 to N, and subtract each number from it
+  int missingNumber(vector<int> &nums) {
+    long long total = (0 + nums.size()) * (nums.size() + 1) / 2;
+    for (int n : nums) {
+      total -= n;
+    }
+    return total;
+  }
+};

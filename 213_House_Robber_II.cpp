@@ -33,3 +33,40 @@ class Solution {
     return max(result, profitB[i - 1]);
   }
 };
+
+
+// 2024-01-09
+class Solution {
+public:
+    int house_robber_i(const vector<int>& nums) {
+        if (nums.size() == 0) {
+            return 0;
+        } else if (nums.size() == 1) {
+            return nums[0];
+        }
+
+        // begin inclusive, end exclusive
+        vector<int> dp(nums.size(), 0);
+        dp[0] = nums[0];
+        dp[1] = max(nums[0], nums[1]);
+
+        for (int i = 2; i < nums.size(); i++) {
+            dp[i] = max(dp[i - 2] + nums[i], dp[i - 1]);
+        }
+        return *max_element(dp.begin(), dp.end());
+    }
+
+    int rob(vector<int>& nums) {
+        if (nums.size() == 0) {
+            return 0;
+        } else if (nums.size() == 1) {
+            return nums[0];
+        } else {
+            vector<int> l = vector(nums.begin(), nums.end() - 1);
+            vector<int> r = vector(nums.begin() + 1, nums.end());
+            return max(
+                house_robber_i(l),
+                house_robber_i(r));
+        }
+    }
+};

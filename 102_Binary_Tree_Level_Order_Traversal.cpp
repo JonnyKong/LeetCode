@@ -38,3 +38,40 @@ class Solution {
     return result;
   }
 };
+
+// 2023-12-26
+class Solution {
+public:
+    void bfs(queue<TreeNode*> & bfs_queue, vector<vector<int>> & all_levels) {
+        if (bfs_queue.size() == 0) {
+            return;
+        }
+
+        vector<int> current_level;
+        int size = bfs_queue.size();
+        for (int i = 0; i < size; i++) {
+            TreeNode *n = bfs_queue.front();
+            bfs_queue.pop();
+            current_level.push_back(n->val);
+
+            if (n->left) {
+                bfs_queue.push(n->left);
+            }
+            if (n->right) {
+                bfs_queue.push(n->right);
+            }
+        }
+        all_levels.push_back(current_level);
+        bfs(bfs_queue, all_levels);
+    }
+
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<vector<int>> all_levels; 
+        queue<TreeNode*> bfs_queue;
+        if (root != NULL) {
+            bfs_queue.push(root);
+            bfs(bfs_queue, all_levels);
+        }
+        return all_levels;
+    }
+};
