@@ -28,3 +28,35 @@ class Solution {
     return vector<int>(result.begin(), result.begin() + k);
   }
 };
+
+
+// 2024-01-10
+bool comparator(const pair<int, int> & p1, const pair<int, int> p2) {
+    return p1.second > p2.second;
+}
+
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        unordered_map<int, int> freqTable;
+        for (int n : nums) {
+            if (freqTable.find(n) == freqTable.end()) {
+                freqTable[n] = 1;
+            } else {
+                freqTable[n]++;
+            }
+        }        
+
+        vector<pair<int, int>> freqVec;
+        for (auto it = freqTable.begin(); it != freqTable.end(); it++) {
+            freqVec.push_back(make_pair(it->first, it->second));
+        }
+        sort(freqVec.begin(), freqVec.end(), comparator);
+
+        vector<int> ret;
+        for (int i = 0; i < k; i++) {
+            ret.push_back(freqVec[i].first);
+        }
+        return ret;
+    }
+};
