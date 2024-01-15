@@ -69,3 +69,54 @@ Example 4:
 1 2 3 2 1 0  1234 32    -> need to remove 2 opens
 
 */
+
+// 2024-01-14
+class Solution2 {
+    /*
+    Init stack
+
+    For each c in string:
+        If (:
+            push idx to stack
+        Else if ):
+            if stack not empty:
+                pop from stack
+            else:
+                mark i as a ")" to be removed
+
+    Stack now holds the "("s to be removed
+    */
+public:
+    string minRemoveToMakeValid(string s) {
+        set<int> idxToRemove;
+        stack<int> idxPendingClose;
+
+        for (int i = 0; i < s.size(); i++) {
+            char c = s[i];
+
+            if (c == '(') {
+                idxPendingClose.push(i);
+            } else if (c == ')') {
+                if (idxPendingClose.empty()) {
+                    idxToRemove.insert(i);
+                } else {
+                    idxPendingClose.pop();
+                }
+            }
+        }
+
+        while (!idxPendingClose.empty()) {
+            idxToRemove.insert(idxPendingClose.top());
+            idxPendingClose.pop();
+        }
+
+        string ret;
+        for (int i = 0; i < s.size(); i++) {
+            if (idxToRemove.find(i) == idxToRemove.end()) {
+                ret += s[i];
+            }
+        }
+        return ret;
+    }
+};
+

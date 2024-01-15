@@ -24,3 +24,25 @@ class Solution {
     }
 
 }
+
+
+// 2024-01-14
+class Solution {
+public:
+    int countPrimeSetBits(int left, int right) {
+        set<int> primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
+
+        int ret = 0;
+        for (int n = left; n <= right; n++) {
+            int numBits = 0;
+            for (int n_ = n; n_ > 0; n_ >>= 1) {
+                numBits += n_ & 1;
+            }
+            if (primes.find(numBits) != primes.end()) {
+                ret += 1;
+            }
+        }
+
+        return ret;
+    }
+};
