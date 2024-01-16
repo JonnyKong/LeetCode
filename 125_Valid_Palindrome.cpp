@@ -1,19 +1,40 @@
-//
-//  125. Valid Palindrome.h
-//  Project 1
-//
-//  Created by Jonny Kong on 2/22/16.
-//  Copyright © 2016 Jonny Kong. All rights reserved.
-//
+class Solution {
+public:
+    char toLower(char c) {
+        if (c >= 'A' && c <= 'Z') {
+            return c - 'A' + 'a';
+        } else {
+            return c;
+        }
+    }
 
-bool isPalindrome(string s) {
-  int i = 0, j = s.length() - 1;
+    bool isAlphanumeric(char c) {
+        return c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' || c >= '0' && c <= '9';
+    }
 
-  while (i < j) {
-    while (a[i] == ' ') ++i;  // stepping over spaces;
-    while (a[j] == ' ') --j;
+    bool isPalindrome(string s) {
+        if (s.length() <= 1) {
+            return true;
+        }
 
-    if (a[i] >= 'A' && a[i] <= 'Z') a[i] += 32;
-    if (a[j] >= 'A' && a[j] <= 'Z') a[i] += 32;
-  }
-}
+        int i = 0;
+        int j = s.size() - 1;
+        while (i < j) {
+            // Eat whitespaces
+            while (i < s.size() && !isAlphanumeric(s[i])) {
+                i++;
+            }
+            while (j >= 0 && !isAlphanumeric(s[j])) {
+                j--;
+            }
+            if (i >= j) {
+                return true;
+            }
+
+            if (toLower(s[i++]) != toLower(s[j--])) {
+                return false;
+            }
+        }
+        return true;
+    }
+};
