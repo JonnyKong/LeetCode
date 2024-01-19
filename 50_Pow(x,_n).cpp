@@ -60,7 +60,27 @@ class Solution2 {
   }
 };
 
-int main() {
-  double result = Solution2().myPow(2.1, 3);
-  cout << result << endl;
-}
+
+// 2024-01-18
+class Solution {
+public:
+    double myPow(double x, int n) {
+        return myPowHelper(x, n);
+    }
+
+    // Use long long to represent n so that n * -1 does not
+    // overflow when n=INT_MIN
+    double myPowHelper(double x, long long n) {
+        if (n < 0) {
+            return 1 / myPowHelper(x, n * -1);
+        } else if (n == 0) {
+            return 1;
+        } else if (n % 2 == 1) {
+            double p = myPowHelper(x, n / 2);
+            return p * p * x;
+        } else {
+            double p = myPowHelper(x, n / 2);
+            return p * p;
+        }
+    }
+};
