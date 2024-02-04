@@ -1,14 +1,15 @@
 class TrieNode {
 public:
-    vector<TrieNode *> c;
+    TrieNode *c[26];
     int numWords;
 
-    TrieNode() : c(26, nullptr), numWords(0) {}
+    TrieNode() {
+        memset(c, NULL, 26 * sizeof(TrieNode *));
+        numWords = 0;
+    }
 };
 
 void insert(TrieNode *root, const string & w) {
-    // Assumes w does not exist in the tree
-    // Root's isEnd and numWords is not valid
     TrieNode *p = root;
 
     for (char c : w) {
