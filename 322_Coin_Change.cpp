@@ -33,3 +33,27 @@ int coinChange(vector<int>& coins, int amount) {
   else
     return numbers[amount];
 }
+
+
+// 2024-02-04
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        vector<int> dp(amount + 1, INT_MAX);
+        dp[0] = 0;
+        
+        for (int i = 1; i < dp.size(); i++) {
+            for (int c : coins) {
+                if (i - c >= 0 && dp[i - c] != INT_MAX) {
+                    dp[i] = min(dp[i], dp[i - c] + 1);
+                }
+            }
+        }
+
+        if (dp.back() == INT_MAX) {
+            return -1;
+        } else {
+            return dp.back();
+        }
+    }
+};
