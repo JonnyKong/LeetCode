@@ -122,3 +122,53 @@ string longestPalindrome(string s) {
 
   return s.substr(left, right - left + 1);
 }
+
+class Solution2 {
+public:
+    string longestPalindrome(string s) {
+        // dp[i, j] == 1 means s[i:j] is palindrome
+        vector<vector<bool>> dp(s.length(), vector<bool>(s.length(), false));
+        int maxlen = 1;
+        int maxlenStart = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            dp[i][i] == true;
+            for (int j = 1; i - j >= 0 && i + j < s.length(); j++) {
+                if (s[i - j] == s[i + j]) {
+                    dp[i - j][i + j] == true;
+                    if (2 * j + 1 > maxlen) {
+                        maxlen = 2 * j + 1; 
+                        maxlenStart = i - j;
+                    }
+                } else {
+                    break;
+                }
+            }
+        }
+
+        for (int i = 0; i < s.length() - 1; i++) {
+            if (s[i] == s[i + 1]) {
+                dp[i][i + 1] == true;
+                if (maxlen < 2) {
+                    maxlen = 2;
+                    maxlenStart = i;
+                }
+            } else {
+                continue;
+            }
+            for (int j = 1; i - j >= 0 && i + j + 1 < s.length(); j++) {
+                if (s[i - j] == s[i + j + 1]) {
+                    dp[i - j][i + j + 1] == true;
+                    if (2 * j + 2 > maxlen) {
+                        maxlen = 2 * j + 2;
+                        maxlenStart = i - j;
+                    }
+                } else {
+                    break;
+                }
+            }
+        }
+
+        return s.substr(maxlenStart, maxlen);
+    }
+};
