@@ -33,3 +33,26 @@ public:
         return pq.top();
     }
 };
+
+// 2025-02-16
+class Solution3 {
+    /*
+    Maintain a min-heap, that maintains the rolling k largest numbers.
+    */
+public:
+    int findKthLargest(vector<int>& nums, int k) {
+        priority_queue<int, vector<int>, greater<int>> q;
+
+        for (int a : nums) {
+            if (q.size() >= k) {
+                if (a > q.top()) {
+                    q.pop();
+                    q.push(a);
+                }
+            } else {
+                q.push(a);
+            }
+        }
+        return q.top();
+    }
+};

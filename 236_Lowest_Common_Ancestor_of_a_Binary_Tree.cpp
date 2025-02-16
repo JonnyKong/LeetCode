@@ -88,3 +88,27 @@ public:
         }
     }
 };
+
+// 2025-02-16
+class Solution4 {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        // If only one of P or Q is under root, return P or Q
+        // If none of P or Q is under root, return NULL
+        if (root == NULL) {
+            return NULL;
+        } else if (p == root || q == root) {
+            return root;
+        } else {
+            auto l = lowestCommonAncestor(root->left, p, q);
+            auto r = lowestCommonAncestor(root->right, p, q);
+            if (l && r) {
+                // P and Q belong to different sub-trees
+                return root;
+            } else {
+                // P and Q belong to the same sub-tree
+                return l ? l : r;
+            }
+        }
+    }
+};
