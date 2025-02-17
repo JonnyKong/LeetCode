@@ -36,7 +36,7 @@ class Solution {
 
 
 // 2024-01-09
-class Solution {
+class Solution2 {
 public:
     int house_robber_i(const vector<int>& nums) {
         if (nums.size() == 0) {
@@ -68,5 +68,37 @@ public:
                 house_robber_i(l),
                 house_robber_i(r));
         }
+    }
+};
+
+// 2025-02-16
+class Solution3 {
+    int houseRobberOne(const vector<int> &nums) {
+        if (nums.size() == 0) {
+            return 0;
+        } else if (nums.size() <= 2) {
+            return *max_element(nums.begin(), nums.end());
+        }
+
+        vector<int> dp(nums.size(), 0);
+        dp[0] = nums[0];
+        dp[1] = max(nums[0], nums[1]);
+        for (int i = 2; i < nums.size(); i++) {
+            dp[i] = max(dp[i - 2] + nums[i], dp[i - 1]);
+        }
+        return *max_element(dp.begin(), dp.end());
+    }
+
+public:
+    int rob(vector<int>& nums) {
+        if (nums.size() == 0) {
+            return 0;
+        } else if (nums.size() <= 2) {
+            return *max_element(nums.begin(), nums.end());
+        }
+
+        vector<int> nums1 = vector<int>(nums.begin(), nums.end() - 1);
+        vector<int> nums2 = vector<int>(nums.begin() + 1, nums.end());
+        return max(houseRobberOne(nums1), houseRobberOne(nums2));
     }
 };
