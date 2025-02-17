@@ -121,3 +121,44 @@ public:
         return true;
     }
 };
+
+// 2025-02-16
+class Solution3 {
+    // Idea: Loop detection
+    vector<vector<int>> adjList;
+    vector<int> visited;   // 0 means not visited, 1 means visiting, 2 means visited
+
+    bool dfs(int numCourses, int src, const vector<vector<int>> &adjList) {
+        visited[src] = 1;
+        for (int neighbor : adjList[src]) {
+            if (visited[neighbor] == 0) {
+                if (!dfs(numCourses, neighbor, adjList)) {
+                    return false;
+                }
+            } else if (visited[neighbor] == 1) {
+                return false;
+            }
+        }
+        visited[src] = 2;
+        return true;
+    }
+    
+public:
+    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
+        adjList = vector<vector<int>>(numCourses);
+        for (const auto &edge : prerequisites) {
+            adjList[edge[0]].push_back(edge[1]);
+        }
+        
+        visited = vector<int>(numCourses, 0);
+
+        for (int i = 0; i < numCourses; i++) {
+            if (!visited[i]) {
+                if (!dfs(numCourses, i, adjList)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+};
